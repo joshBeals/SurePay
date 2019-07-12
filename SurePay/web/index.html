@@ -27,6 +27,10 @@
     <!-- Index-Page-CSS -->
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
     <!-- //Custom-Stylesheet-Links -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
     <!--fonts -->
     <!-- //fonts -->
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
@@ -42,8 +46,14 @@
 <!-- Body -->
 
 <body>
-
-<section class="main">
+<section class="main" style="position: relative;">
+	<div class="alert alert-danger alert-dismissible fade show hide" role="alert"
+	style="position: absolute; top: 10px; right: 1%; z-index: 100" id="main">
+		<strong id='topic'></strong> <span id='body'></span>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
 	<div class="layer">
 		<div class="content-w3ls">
 			<div class="text-center icon">
@@ -51,11 +61,11 @@
 			</div>
 			<h2 id="title" style="text-align: center; color: white; font-size: 30px; margin-bottom: 20px; transition: 300ms ease-in-out; font-family: 'Mukta', sans-serif;">Sign In</h2>
 			<div class="content-bottom">
-				<form action="#" method="post" id="loginForm">
+				<form id="loginForm">
 					<div class="field-group">
-						<span class="fa fa-user" aria-hidden="true"></span>
+						<span class="fa fa-envelope" aria-hidden="true"></span>
 						<div class="wthree-field">
-							<input name="logUser" id="logUser" type="text" value="" placeholder="Username" required>
+							<input name="logEmail" id="logEmail" type="email" value="" placeholder="Email">
 						</div>
 					</div>
 					<div class="field-group">
@@ -65,7 +75,7 @@
 						</div>
 					</div>
 					<div class="wthree-field">
-						<button type="submit" class="btn">Get Started</button>
+						<button class="btn" id="loginUser">Get Started</button>
 					</div>
 					<ul class="list-login">
 						<li class="switch-agileits">
@@ -90,17 +100,17 @@
 
 
 
-				<form action="#" method="post" id="createForm" class="hide">
+				<form id="createForm" class="hide">
 					<div class="field-group">
 						<span class="fa fa-user" aria-hidden="true"></span>
 						<div class="wthree-field">
-							<input name="regUser" id="regUser" type="text" value="" placeholder="Username" required>
+							<input name="regUser" id="regUser" type="text" value="" placeholder="Fullname">
 						</div>
 					</div>
 					<div class="field-group">
 						<span class="fa fa-envelope" aria-hidden="true"></span>
 						<div class="wthree-field">
-							<input name="regEmail" id="regEmail" type="email" value="" placeholder="Email" required>
+							<input name="regEmail" id="regEmail" type="email" value="" placeholder="Email">
 						</div>
 					</div>
 					<div class="field-group">
@@ -110,7 +120,7 @@
 						</div>
 					</div>
 					<div class="wthree-field">
-						<button type="submit" class="btn">Create Account</button>
+						<button class="btn" id="createUser">Create Account</button>
 					</div>
 					<ul class="list-login-bottom">
 						<li style="display: flex; justify-content: center; margin-top: 10px;">
@@ -123,7 +133,13 @@
 		</div>
     </div>
 </section>
-<script src="dist/main.bundle.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+<script src="js/login.js"></script>
+<script src="js/register.js"></script>
 </body>
 <!-- //Body -->
 </html>

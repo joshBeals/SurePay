@@ -48,14 +48,14 @@
 
                 // execute the query, also check if query was successful
                 if($stmt->execute()){
-                    return true;
+                    return json_encode(array("status"=>"1", "message" => "user created successfully."));
                 }
 
-                return false;
+                return json_encode(array("status"=>"0", "message" => "Email already exists."));
 
             }
 
-            return false;
+            return json_encode(array("status"=>"0", "message" => "user not created."));
         }
 
         // check if given email exist in the database

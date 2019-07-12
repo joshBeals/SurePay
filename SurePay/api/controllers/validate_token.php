@@ -35,6 +35,7 @@
     
             // show user details
             echo json_encode(array(
+                "status" => "1",
                 "message" => "Access granted.",
                 "data" => $decoded->data
             ));
@@ -48,6 +49,7 @@
         
             // tell the user access denied  & show error message
             echo json_encode(array(
+                "status" => "0",
                 "message" => "Access denied.",
                 "error" => $e->getMessage()
             ));

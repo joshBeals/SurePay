@@ -35,42 +35,54 @@
     $user->password = $data->password;
     $email_exists = $user->emailExists();
 
-    // check if email exists and if password is correct
-    if($email_exists && password_verify($data->password, $user->password)){
-    
-        $token = array(
-        "iss" => $iss,
-        "aud" => $aud,
-        "iat" => $iat,
-        "nbf" => $nbf,
-        "data" => array(
-                "id" => $user->id,
-                "fullname" => $user->fullname,
-                "email" => $user->email
-            )
-        );
-    
-        // set response code
-        http_response_code(200);
-    
-        // generate jwt
-        $jwt = JWT::encode($token, $key);
-        echo json_encode(
-            array(
-                "status" => "1",
-                "message" => "Successful login.",
-                "jwt" => $jwt
-            )
-        );
-    
+    if(
+        !empty($user->email) &&
+        !empty($user->password)
+    ){
+        // check if email exists and if password is correct
+        if($email_exists && password_verify($data->password, $user->password)){
+        
+            $token = array(
+            "iss" => $iss,
+            "aud" => $aud,
+            "iat" => $iat,
+            "nbf" => $nbf,
+            "data" => array(
+                    "id" => $user->id,
+                    "fullname" => $user->fullname,
+                    "email" => $user->email
+                )
+            );
+        
+            // set response code
+            http_response_code(200);
+        
+            // generate jwt
+            $jwt = JWT::encode($token, $key);
+            echo json_encode(
+                array(
+                    "status" => "1",
+                    "message" => "You are successfully logged in.",
+                    "jwt" => $jwt
+                )
+            );
+        
+        }else{
+
+            // set response code
+            http_response_code(401);
+        
+            // tell the user login failed
+            echo json_encode(array("status" => "0", "message" => "Invalid login details."));
+
+        }
     }else{
-
-        // set response code
-        http_response_code(401);
     
-        // tell the user login failed
-        echo json_encode(array("status" => "0", "message" => "Login failed."));
-
+        // set response code
+        http_response_code(400);
+    
+        // display message: unable to create user
+        echo json_encode(array("status"=>"0", "message" => "Fields cannot be left empty."));
     }
 
 ?>

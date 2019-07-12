@@ -30,15 +30,14 @@
     if(
         !empty($user->fullname) &&
         !empty($user->email) &&
-        !empty($user->password) &&
-        $user->create()
+        !empty($user->password)
     ){
     
         // set response code
         http_response_code(200);
     
         // display message: user was created
-        echo json_encode(array("status"=>"1", "message" => "User was created."));
+        echo $user->create();
     }
     
     // message if unable to create user
@@ -48,7 +47,7 @@
         http_response_code(400);
     
         // display message: unable to create user
-        echo json_encode(array("status"=>"0", "message" => "Unable to create user."));
+        echo json_encode(array("status"=>"0", "message" => "Fields cannot be left empty."));
     }
 
 ?>
