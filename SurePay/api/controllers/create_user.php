@@ -21,7 +21,7 @@
     // get posted data
     $data = json_decode(file_get_contents("php://input"));
     
-    // set product property values
+    // set property values
     $user->fullname = $data->fullname;
     $user->password = $data->password;
     $user->email = $data->email;

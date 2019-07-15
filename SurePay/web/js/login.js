@@ -22,7 +22,7 @@ loginUser.addEventListener('click', (e) => {
     .then(res => res.json())
     .then(data => {
         if(data.status === '1'){
-            console.log('loged in');
+            console.log(data.jwt);
             setCookie("jwt", data.jwt, 1);
             topic.innerHTML = 'Login Successful!';
             body.innerHTML = data.message;
@@ -52,5 +52,7 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 function redirectToDashboard(){
-    setTimeout(console.log('dashboard!'),2000);
+    setTimeout(() => {
+        window.location.replace("http://localhost/surepay/dashboard/index.html");
+    },1000);
 }
