@@ -29,6 +29,7 @@ loginUser.addEventListener('click', (e) => {
             main.classList.remove('hide');
             main.classList.remove('alert-danger');
             main.classList.add('alert-success');
+            redirectToDashboard();
         }else{
             console.log('loged out');
             topic.innerHTML = 'Login Failed!';
@@ -48,4 +49,8 @@ function setCookie(cname, cvalue, exdays) {
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function redirectToDashboard(){
+    setTimeout(console.log('dashboard!'),2000);
 }
