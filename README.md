@@ -1,2 +1,2 @@
 # SurePay
-A payment Ppatform for students to pay their departmental fees
+A payment patform for students to pay their departmental fees
