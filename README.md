@@ -1,2 +1,2 @@
 # SurePay
-A payment patform for students to pay their departmental fees
+A payment platform for students to pay their departmental fees
