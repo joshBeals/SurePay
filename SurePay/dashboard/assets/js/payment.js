@@ -31,6 +31,7 @@ function showLogs(userID){
     })
     .then(res => res.json())
     .then(data => {
+        document.getElementById('paymentLogs').innerHTML = '';
         for(let i = 0; i < data.data.length; i++){
             document.getElementById('paymentLogs').innerHTML += 
             `<tr>

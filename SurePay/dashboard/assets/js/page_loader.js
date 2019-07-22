@@ -190,6 +190,7 @@ function payWithPaystack(id, fee){
       },
       callback: function(response){
         validateSave(id,response.reference,fee);
+        numberAnalysis();
       },
       onClose: function(){
           alert('window closed');
@@ -211,6 +212,7 @@ function validateSave(deptid, transactionRef, amount){
     .then(res => res.json())
     .then(data => {
         saveLog(data.data.id, deptid, transactionRef, amount, jwt);
+        getLog(data.data.id);
         validateGet();
     }).catch(err => console.log(err));
 }
@@ -263,9 +265,12 @@ function getLog(userID){
         let count;
         if(data.data.length > 3){
             count = 3;
+        }else if(data.data.length < 3){
+            count = data.data.length;
         }else{
             count = data.data.length;
         }
+        document.getElementById('RecentTransactions').innerHTML = '';
         for(let i = 0; i < count; i++){
             document.getElementById('RecentTransactions').innerHTML += 
             `<tr>
