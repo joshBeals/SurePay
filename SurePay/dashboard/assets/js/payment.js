@@ -85,11 +85,42 @@ function receipts(userID){
                     <div class='badge badge-pill bg-warning text-white'>${data.data[i].name}</div>
                 </td>
                 <td>
-                    <button class="btn btn-primary btn-sm">Print</button>
+                    <button class="btn btn-primary btn-sm" onclick="printReceipt(${data.data[i].transactionID},${data.data[i].amount},'${data.data[i].name}')">Print</button>
                 </td>
           </tr>`;
         }
     }).catch(err => console.log(err))
+}
+
+// function to print receipt
+function printReceipt(transactionID,amount,name){
+    console.log(transactionID+' '+amount+' '+name);
+    document.getElementById('inner').innerHTML = `<div style="display: flex; width: 100%;">
+    <h1 style="flex: 1; margin:0; padding:0">SurePay Receipt</h1>
+    <div style="flex: 1; text-align: right;">
+      <i class="fas fa-signature" style="color: #fc636b; font-size: 40px;"></i>
+    </div>
+  </div>
+  <hr style="margin:15px; padding:0;">
+  <table class="table align-items-center table-flush">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Transaction ID</th>
+        <th scope="col">Amount Paid</th>
+        <th scope="col">Department Paid To</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${transactionID}</td>
+        <td>N ${amount}</td>
+        <td>${name}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Total: N 5000</p>
+  <button class="btn btn-primary btn-sm" onclick="window.print(); document.getElementById('mymodal').className = 'hide';">Print</button>`;
+      document.getElementById('mymodal').className = 'show';
 }
 
 // get or read cookie

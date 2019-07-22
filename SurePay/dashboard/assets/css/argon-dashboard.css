@@ -57,7 +57,12 @@
 *::after {
   box-sizing: border-box;
 }
-
+.show{
+  display: flex;
+}
+.hide{
+  display: none;
+}
 html {
   font-family: sans-serif;
   line-height: 1.15;
