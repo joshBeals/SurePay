@@ -4,6 +4,7 @@ const viewDepts = document.getElementById('viewDepts');
 const printReceipts = document.getElementById('printReceipts');
 const paymentLog = document.getElementById('paymentLog');
 const userProfile = document.getElementById('userProfile');
+const logout = document.getElementById('logout');
 
 mainContent.addEventListener('load', LoadMainPage);
 viewDepts.addEventListener('click', e => {
@@ -13,6 +14,10 @@ viewDepts.addEventListener('click', e => {
 paymentLog.addEventListener('click', e => {
     e.preventDefault();
     seeAllLogs();
+});
+logout.addEventListener('click', e => {
+    e.preventDefault();
+    window.location.replace("http://localhost/surepay/web/index.html");
 });
 printReceipts.addEventListener('click', e => {
     e.preventDefault();
@@ -101,6 +106,9 @@ function seeAllLogs(){
 
 function depts(){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/getDepts.php', {
         method: 'POST',
         headers: {
@@ -138,6 +146,9 @@ function depts(){
 
 function getDepts(){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/getDepts.php', {
         method: 'POST',
         headers: {
@@ -201,6 +212,9 @@ function payWithPaystack(id, fee){
 
 function validateSave(deptid, transactionRef, amount){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/validate_token.php', {
         method: 'POST',
         headers: {
@@ -219,6 +233,9 @@ function validateSave(deptid, transactionRef, amount){
 
 function validateGet(){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/validate_token.php', {
         method: 'POST',
         headers: {
@@ -252,6 +269,9 @@ function saveLog(userID, deptID, transactionRef, amount, jwt){
 
 function getLog(userID){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/getPaymentLog.php', {
         method: 'POST',
         headers: {
@@ -299,6 +319,9 @@ function getLog(userID){
 
 function numberAnalysis(){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/numberAnalysis.php', {
         method: 'POST',
         headers: {

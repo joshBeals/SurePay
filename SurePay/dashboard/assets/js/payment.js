@@ -2,6 +2,9 @@ let userName = document.getElementById('userName');
 
 function validate(){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/validate_token.php', {
         method: 'POST',
         headers: {
@@ -21,6 +24,9 @@ function validate(){
 
 function showLogs(userID){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/getPaymentLog.php', {
         method: 'POST',
         headers: {
@@ -59,6 +65,9 @@ function showLogs(userID){
 
 function receipts(userID){
     let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surepay/web/index.html");
+    }
     fetch('http://localhost/surepay/api/controllers/getPaymentLog.php', {
         method: 'POST',
         headers: {
@@ -119,8 +128,8 @@ function printReceipt(transactionID,amount,name){
     </tbody>
   </table>
   <p>Total: N 5000</p>
-  <button class="btn btn-primary btn-sm" onclick="window.print(); document.getElementById('mymodal').className = 'hide';">Print</button>`;
-      document.getElementById('mymodal').className = 'show';
+  <button class="btn btn-primary btn-sm" onclick="window.print(); document.getElementById('mymodal').className = 'hide';">Print</button><button class="btn btn-danger btn-sm" onclick="document.getElementById('mymodal').className = 'hide';">Cancel</button>`;
+    document.getElementById('mymodal').className = 'show';
 }
 
 // get or read cookie
