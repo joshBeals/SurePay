@@ -129,7 +129,7 @@ function printReceipt(transactionID,amount,name){
   </table>
   <p>Total: N 5000</p>
   <button class="btn btn-primary btn-sm" onclick="window.print(); document.getElementById('mymodal').className = 'hide';">Print</button><button class="btn btn-danger btn-sm" onclick="document.getElementById('mymodal').className = 'hide';">Cancel</button>`;
-    document.getElementById('mymodal').className = 'show';
+    document.getElementById('mymodal').className = 'view';
 }
 
 // get or read cookie
